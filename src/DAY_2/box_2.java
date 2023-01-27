@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class box_1 {
+public class box_2 {
 	public static void main(String[] args) throws IOException {
 		File file = new File("C:/eclipse-workspace/adventofcode_2015/paper_2.txt");
 		List<String> dm = parseFileToStringList(file);
 		// System.out.println(hh);
 
-		int areaFull = 0;
+		int lengthFull = 0;
+		
 
 		for (String temp : dm) {
 			String[] array = temp.split("x");
@@ -22,11 +23,11 @@ public class box_1 {
 			int width = Integer.parseInt(array[1]);
 			int height = Integer.parseInt(array[2]);
 
-			int area = 2 * length * width + 2 * width * height + 2 * height * length;
-			int areaMin = Math.min(length * width, Math.min(width * height, height * length));
-			areaFull = areaFull + (area + areaMin);
+			int volume = length * width * height;
+			int perimeterMin = Math.min(2*(length + width), Math.min(2*(width + height), 2*(height + length)));
+			lengthFull = lengthFull + (volume + perimeterMin);
 		}
-		System.out.println("Area_full - " + areaFull);
+		System.out.println("LengthFull - " + lengthFull);
 	}
 
 	public static List<String> parseFileToStringList(File file) throws IOException {
